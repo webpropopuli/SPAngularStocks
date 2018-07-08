@@ -1,10 +1,6 @@
 
 .vscode
 
-obj
-bin
-obj/Debug
-obj/StockApp1.API.csproj.nuget.cache
-obj/StockApp1.API.csproj.nuget.g.props
-obj/project.assets.json
-obj/Debug/netcoreapp2.1/StockApp1.API.assets.cache
+obj/**
+bin/*
+
