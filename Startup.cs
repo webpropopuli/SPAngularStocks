@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
-//using Microsoft.EntityFrameworkCore.SqlServer;
+
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +33,7 @@ namespace StockApp1.API
         {
             // see appdata.json for connectstring
             services.AddDbContext<StockDataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnectionString")));
-
+            services.AddCors();    
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -50,7 +50,9 @@ namespace StockApp1.API
             }
 
             //app.UseHttpsRedirection();
-            app.UseMvc();
+           
+            app.UseCors(x => x.AllowCredentials().AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+             app.UseMvc();  // This should always be last ince it returns headers
         }
     }
 }
