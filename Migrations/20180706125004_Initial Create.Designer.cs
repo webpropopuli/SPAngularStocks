@@ -26,6 +26,8 @@ namespace StockApp1.API.Migrations
 
                     b.Property<string>("Symbol");
 
+                    b.Property<string>("Close");
+
                     b.HasKey("Id");
 
                     b.ToTable("Values");

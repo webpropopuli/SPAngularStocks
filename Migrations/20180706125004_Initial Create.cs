@@ -13,7 +13,8 @@ namespace StockApp1.API.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Symbol = table.Column<string>(nullable: true)
+                    Symbol = table.Column<string>(nullable: true),
+                    Close = table.Column<float>(nullable: true)
                 },
                 constraints: table =>
                 {
