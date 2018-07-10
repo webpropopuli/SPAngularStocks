@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using StockApp.MyData;
 using StockApp1.API.MyData;
 
 namespace StockApp1.API
@@ -33,7 +33,8 @@ namespace StockApp1.API
         {
             // see appdata.json for connectstring
             services.AddDbContext<StockDataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnectionString")));
-            services.AddCors();    
+            services.AddCors(); 
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
